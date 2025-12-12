@@ -1,13 +1,13 @@
 export default async function PRListPage() {
-  // Fetch from your live API
+  // Fetch from your deployed Vercel API
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/events/kestra`,
+    "https://ai-change-blackbox.vercel.app/api/events/kestra",
     { cache: "no-store" }
   );
 
   const runs = await res.json();
 
-  // Transform rows into UI format
+  // Transform DB rows into dashboard cards
   const prs = runs.map((r: any) => ({
     id: r.id,
     title: r.pr_id,
